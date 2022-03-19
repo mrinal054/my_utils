@@ -3,18 +3,18 @@
 
 It uses parametric line euqation. It works for both 2D and 3D lines. 
 
-Input
+### Input
 -----------
-data: Input array. For 2D line, data.shape=(rows, 2). For 3D array, data.shape=(rows, 3)
-step: Step size
-rng: Range. A tuple, e.g. (start, end) Based on its value, line will be inside of outise the data points.
+- data: Input array. For 2D line, data.shape=(rows, 2). For 3D array, data.shape=(rows, 3)
+- step: Step size
+- rng: Range. A tuple, e.g. (start, end) Based on its value, line will be inside of outise the data points.
 
-Output
+### Output
 -----------
     - Returns line cooridinates
-Example
+### Example
 -----------
-    """
+    
     import numpy as np
     import matplotlib.pyplot as plt
     
@@ -35,4 +35,4 @@ Example
     fig = plt.figure()
     ax = plt.axes(projection='3d')
     ax.plot3D(out3D[:,0], out3D[:,1], out3D[:,2])
-    """
+    
