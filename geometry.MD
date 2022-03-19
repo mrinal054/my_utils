@@ -1,20 +1,16 @@
-## Function: line
-
-
+# Function: line
+------------------
 It uses parametric line euqation. It works for both 2D and 3D lines. 
 
 ### Input
------------
 - data: Input array. For 2D line, data.shape=(rows, 2). For 3D array, data.shape=(rows, 3)
 - step: Step size
 - rng: Range. A tuple, e.g. (start, end) Based on its value, line will be inside of outise the data points.
 
 ### Output
------------
 - Returns line cooridinates
 
 ### Example
------------
     
     import numpy as np
     import matplotlib.pyplot as plt
