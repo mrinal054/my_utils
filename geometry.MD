@@ -1,6 +1,6 @@
 ## Function: line
 
-    '''
+
     It uses parametric line euqation. It works for both 2D and 3D lines. 
     
     Input
@@ -34,4 +34,4 @@
     fig = plt.figure()
     ax = plt.axes(projection='3d')
     ax.plot3D(out3D[:,0], out3D[:,1], out3D[:,2])
-    '''
+
