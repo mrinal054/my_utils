@@ -14,6 +14,7 @@
         - Returns line cooridinates
     Example
     -----------
+    """
     import numpy as np
     import matplotlib.pyplot as plt
     
@@ -34,4 +35,4 @@
     fig = plt.figure()
     ax = plt.axes(projection='3d')
     ax.plot3D(out3D[:,0], out3D[:,1], out3D[:,2])
-
+    """
