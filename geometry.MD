@@ -11,7 +11,8 @@ It uses parametric line euqation. It works for both 2D and 3D lines.
 
 ### Output
 -----------
-    - Returns line cooridinates
+- Returns line cooridinates
+
 ### Example
 -----------
     
