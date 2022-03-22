@@ -5,7 +5,7 @@ Currently has - <br>
     |-- line: Creates 2D/3D line <br>
   * get.py <br>
     |-- get_dcm: Reads DICOM images <br>
-    |-- get_text: Read text files <br>
+    |-- get_text: Reads text files <br>
     
     
     
