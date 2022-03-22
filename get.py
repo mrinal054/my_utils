@@ -75,3 +75,33 @@ def get_dcm(dcm_path):
     intensity = (dcm_data.min(), dcm_data.max())
         
     return dcm_data, pix_spacing, intensity
+
+
+#%% get_text
+'''
+* 'get_text' control points from text files
+* In our purpose, we are looking for two text files named - 'iantube_left.asc', 'iantube_right.asc'.
+  So, user can change it according to their needs.
+* Input parameter:
+    text_loc: tentative location of text data
+
+* Output:
+    Returns control points in list format
+'''
+def get_text(text_loc):
+    text = []
+    for dir_name, sub_dir_list, file_list in os.walk(text_loc):
+        for file_name in file_list:
+            if ".asc" in file_name.lower():  # check whether the file's DICOM  
+                if file_name=='iantube_left.asc'or file_name=='iantube_right.asc':
+                    text.append(os.path.join(dir_name,file_name))
+    
+    if len(text) == 2:
+        cp1 = np.loadtxt(text[0]) #left control points
+        cp2 = np.loadtxt(text[1]) #right control points
+        return list([cp1, cp2]) #returning as a list
+    elif len(text) == 1: 
+        cp1 = np.loadtxt(text[0]) #left or right control point
+        return list(cp1) #returning as a list
+    else: raise NameError('Name not found')
+        
