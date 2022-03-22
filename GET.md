@@ -9,3 +9,7 @@
    - dcm_data: dicom data in a single array
    - pix_spacing: spacing of pixel/voxel
    - intensity: min and max intensity
+
+### Example
+    dcm_loc = r'.\dicom\slc'
+    d, pix_spacing_org, intensity_org = get_dcm(dcm_loc)
