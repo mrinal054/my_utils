@@ -116,6 +116,16 @@ def get_dir(path):
 #%% Scale intesity within a range
 '''
 * This code clips intensity within a range.
+Example
+========
+dicom_loc = dcm_loc = r'.\dicom'
+
+d, pix_spacing_org, intensity_org = get_dcm(dcm_loc)
+
+min_int, max_int = -1000, 3095 #set min and max intensity level
+
+d_scaled = scale_intensity(d, min_int, max_int)
+
 '''
 def scale_intensity(data_set, min_int, max_int):
     # Clip intensity within -1000 to 3095
