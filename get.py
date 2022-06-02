@@ -118,9 +118,9 @@ def get_dir(path):
 * This code clips intensity within a range.
 Example
 ========
-dicom_loc = dcm_loc = r'.\dicom'
+dicom_loc = r'.\dicom'
 
-d, pix_spacing_org, intensity_org = get_dcm(dcm_loc)
+d, pix_spacing_org, intensity_org = get_dcm(dicom_loc)
 
 min_int, max_int = -1000, 3095 #set min and max intensity level
 
@@ -128,7 +128,7 @@ d_scaled = scale_intensity(d, min_int, max_int)
 
 '''
 def scale_intensity(data_set, min_int, max_int):
-    # Clip intensity within -1000 to 3095
+    # Clip intensity within min intensity to max intensity
     # Clip min intensity
     idx = np.where(data_set <= min_int)
     data_set[idx[0],idx[1],idx[2]] = min_int
