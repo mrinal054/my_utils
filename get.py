@@ -104,4 +104,26 @@ def get_text(text_loc):
         cp1 = np.loadtxt(text[0]) #left or right control point
         return list(cp1) #returning as a list
     else: raise NameError('Name not found')
-        
+
+#%% get_dir
+'''
+* This code creates directory
+'''
+def get_dir(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+#%% Scale intesity within a range
+'''
+* This code clips intensity within a range.
+'''
+def scale_intensity(data_set, min_int, max_int):
+    # Clip intensity within -1000 to 3095
+    # Clip min intensity
+    idx = np.where(data_set <= min_int)
+    data_set[idx[0],idx[1],idx[2]] = min_int
+    # Clip max intensity
+    idx = np.where(data_set >= max_int)
+    data_set[idx[0],idx[1],idx[2]] = max_int 
+    
+    return data_set
