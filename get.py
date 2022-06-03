@@ -137,3 +137,10 @@ def scale_intensity(data_set, min_int, max_int):
     data_set[idx[0],idx[1],idx[2]] = max_int 
     
     return data_set
+
+#%% Normalize data
+def normalize(data_set, min_int, max_int):    
+    data_set_norm = (data_set - min_int)/(max_int - min_int)
+    data_set_norm = data_set_norm.astype('float32')
+    
+    return data_set_norm
