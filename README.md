@@ -8,7 +8,7 @@ Currently has - <br>
     |-- get_text: Reads text files <br>
     |-- get_dir: Creates directory <br>
     |-- scale_intensity: Clips intensity within a range
-    
+    |-- normalize: Normalize data
     
     
    
