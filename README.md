@@ -9,6 +9,10 @@ Currently has - <br>
     |-- get_dir: Creates directory <br>
     |-- scale_intensity: Clips intensity within a range
     |-- normalize: Normalize data
+  * morph.py <br>
+    |-- get_ccomps: Returns voxel locations of connected components
+    |-- get_and_refine_ccomps: Returns voxel locations of connected components. Also, it removes
+    any ccomp that has single voxel. 
     
     
    
