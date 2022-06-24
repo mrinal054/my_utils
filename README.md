@@ -7,12 +7,12 @@ Currently has - <br>
     |-- get_dcm: Reads DICOM images <br>
     |-- get_text: Reads text files <br>
     |-- get_dir: Creates directory <br>
-    |-- scale_intensity: Clips intensity within a range
-    |-- normalize: Normalize data
+    |-- scale_intensity: Clips intensity within a range <br>
+    |-- normalize: Normalize data <br>
   * morph.py <br>
-    |-- get_ccomps: Returns voxel locations of connected components
+    |-- get_ccomps: Returns voxel locations of connected components <br>
     |-- get_and_refine_ccomps: Returns voxel locations of connected components. Also, it removes
-    any ccomp that has single voxel. 
+    any ccomp that has single voxel. <br>
     
     
    
