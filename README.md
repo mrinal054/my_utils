@@ -14,7 +14,7 @@ Currently has - <br>
     |-- get_and_refine_ccomps: Returns voxel locations of connected components. Also, it removes
     any ccomp that has single voxel. <br>
   * utils.py <br>
-    |-- vec2angle: returns angle between two vectors
-    |-- points2vec: calculates the vector from two points.
+    |-- vec2angle: returns angle between two vectors <br>
+    |-- points2vec: calculates the vector from two points <br>
     
    
