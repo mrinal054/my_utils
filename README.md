@@ -13,7 +13,8 @@ Currently has - <br>
     |-- get_ccomps: Returns voxel locations of connected components <br>
     |-- get_and_refine_ccomps: Returns voxel locations of connected components. Also, it removes
     any ccomp that has single voxel. <br>
-    |-- del_ccomp: Deletes connected components based on size <br>
+    |-- del_ccomp: Deletes connected components based on size (slower) <br>
+    |-- del_ccomp3d: Deletes connected components based on size (faster) <br>
     |-- split_vol: Splits a 3d volume into two parts <br>
     |-- merge_vol: Merges two volumes <br>
     
