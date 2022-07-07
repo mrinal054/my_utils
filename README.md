@@ -21,5 +21,6 @@ Currently has - <br>
     |-- vec2angle: Returns angle between two vectors <br>
     |-- points2vec: Calculates the vector from two points <br>
     |-- sampling: Samples data <br>
+    |-- isNestedList: Checks if the list is nested <br>
     
    
