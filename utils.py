@@ -183,3 +183,28 @@ def sampling(voxels, p1_idx=0, step=5, step_range=(1,5), angle_range=(5,30), rat
         
     return sample_points             
         
+#%%
+def create_vol(shape, dtype, voxels, data):
+    '''
+    It creates volume from based on given voxels and data
+    
+    Input
+    -------
+    shape: shape of the volume
+    dtype: data type
+    voxels: voxels of the volume that will contain a specific value
+    data: value that voxels will contain
+    
+    Output
+    --------
+    vol: a 3D volume
+    
+    '''
+    
+    if isinstance(voxels, list): voxels = np.array(voxels)
+    
+    vol = np.zeros(shape, dtype)
+    vol[voxels[:,0], voxels[:,1], voxels[:,2]] = data
+    
+    return vol
+
