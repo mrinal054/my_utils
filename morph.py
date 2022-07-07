@@ -1,6 +1,7 @@
 import numpy as np
 from skimage import measure, morphology
 from scipy.spatial import distance
+import cc3d
 
 #%%
 def get_ccomps(vol):
