@@ -23,5 +23,6 @@ Currently has - <br>
     |-- sampling: Samples data <br>
     |-- isNestedList: Checks if the list is nested <br>
     |-- create_vol: Creates volume based on given voxels and data
+    |-- xyz2asc: writes x, y, and z coordinates to a .asc file
     
    
