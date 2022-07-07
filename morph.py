@@ -99,6 +99,52 @@ def del_ccomp(vol, connectivity, method, value):
             raise NameError('Wrong keyword')
     return out.astype('uint8') # converting back to uint8
 
+def del_ccomp3d(vol, connectivity, method, value):
+    '''
+    This function deletes ccomp which is less than the given size.
+    
+    INPUT arguments:
+        * vol: 3D binary image from which ccomp will be deleted
+        * sorted_idx: ccomp volumes will be sorted by their size in descending
+        order. So, sorted_idx will be used to get the nth sorted volume.
+        * connectivity: 6, 18 or 26 neighbors.
+        * method: two methods - 
+            'SizeOfCcomp': if 'value' is 2, then it keeps two largest ccomps
+            only
+            'NumOfVoxels': if 'value' is 50, then it removes ccomps smaller
+            than 50
+        * value: assign a value based on which 'method' works
+    
+    OUTPUT: A 3D image
+    '''     
+    if connectivity not in [6, 18, 26]: raise ValueError('Wrong value for connectivity')
+    
+    if method == 'SizeOfCcomp':
+        
+        out = np.zeros(vol.shape, vol.dtype)
+        
+        labels_out, num = cc3d.connected_components(vol, connectivity=connectivity, return_N=True)
+        
+        if num != 0:
+            stats = cc3d.statistics(labels_out)
+            vox_cnt = stats['voxel_counts']
+            vox_cnt_no_bg = vox_cnt[1:] # remove background count
+            vox_cnt_no_bg_sort = np.argsort(vox_cnt_no_bg)[::-1] # argsort in descending order         
+    
+            for i in range(value):
+                out[labels_out == vox_cnt_no_bg_sort[i]+1] = 1
+                # Note: 1 is added because bg count has been deleted from the voxel count list.
+                # So, index position 0, means label 1. So, label = index + 1
+                
+            return out
+        
+        else: return out
+        
+    elif method == 'NumOfVoxels':
+        out = cc3d.dust(vol, threshold=value, connectivity=connectivity, in_place=False)
+        
+        return out
+
 #%%
 def split_vol(vol):
     '''
