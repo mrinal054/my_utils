@@ -208,3 +208,12 @@ def create_vol(shape, dtype, voxels, data):
     
     return vol
 
+#%%
+def xyz2asc(data, name):
+    '''
+    It writes x, y, and z values to a .asc file.
+    '''
+    f = open(name, 'w')
+    for d in data: print("%f %f %f" % (d[0], d[1], d[2]), file=f)
+    f.close()
+
