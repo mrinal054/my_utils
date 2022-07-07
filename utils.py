@@ -186,7 +186,7 @@ def sampling(voxels, p1_idx=0, step=5, step_range=(1,5), angle_range=(5,30), rat
 #%%
 def create_vol(shape, dtype, voxels, data):
     '''
-    It creates volume from based on given voxels and data
+    It creates volume based on given voxels and data
     
     Input
     -------
