@@ -17,6 +17,7 @@ Currently has - <br>
     |-- del_ccomp3d: Deletes connected components based on size (faster) <br>
     |-- split_vol: Splits a 3d volume into two parts <br>
     |-- merge_vol: Merges two volumes <br>
+    |-- vol_crop: Crops a specified volume around a given voxel <br>
     
   * utils.py <br>
     |-- vec2angle: Returns angle between two vectors <br>
