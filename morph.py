@@ -167,3 +167,29 @@ def merge_vol(first_half, sec_half, vol_size):
     out[:,half_col:vol_size[1],:] = sec_half
     return out
 
+#%%
+def vol_crop(vol, r, c, d, sigma):
+    '''
+    This function crops a volume around a given voxel
+
+    INPUT parameters:
+    * vol: a binary 3D volume
+    * 'r', 'c', 'd': row, column, depth
+    * sigma: It defines cropped volume size. 
+            For sigma=1, cropped volume size is 3x3x3
+            For sigma=2, cropped volume size is 5x5x5
+
+    OUTPUT:
+    * cropped_vol: a 3D volume whose size is defined by 'sigma'
+    '''
+    # Add zero padding. Otherwise, it will not be possible to crop 3x3x3 
+    # volume around a corner or boundary voxel      
+    padded_vol = np.pad(vol, (sigma,), 'constant', constant_values=0)
+    padded_r = r + sigma
+    padded_c = c + sigma
+    padded_d = d + sigma
+    # Get cropped volume
+    cropped_vol = padded_vol[padded_r-sigma:(padded_r+sigma)+1,
+                             padded_c-sigma:(padded_c+sigma)+1,padded_d-sigma:(padded_d+sigma)+1]
+    return cropped_vol
+
