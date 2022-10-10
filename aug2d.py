@@ -86,4 +86,40 @@ class Augmentor2d():
         
         return shear_img
     
-    
+# =============================================================================
+# # Example
+# from PIL import Image
+# import matplotlib.pyplot as plt
+# import numpy as np
+# from aug2d import Augmentor2d
+# 
+# img = Image.open('0011.png')
+# 
+# img = np.array(img)
+# 
+# # Create an augmentation instance
+# aug = Augmentor2d(img)
+# 
+# # Rotate image
+# rot_img = aug.rotate(-45, mode='constant')
+# 
+# # Flip image.0 means horizontal, and 1 means vertical flip
+# flip_img = aug.flip(flip_axis=1)
+# 
+# # Zoom image. For zoom-in, factor>1, for zoom-out, factor<1
+# zoom_img = aug.zoom(factor=0.5)
+# 
+# # Shift image. 
+# shift_img = aug.shift((55, 25), mode='constant')
+# 
+# # Rescale image
+# rescale = aug.rescale(1/255.)
+# 
+# # Shear image
+# shear_img = aug.shear(factor=0.2)
+# 
+# # Plot
+# fig, axs = plt.subplots(1,2)
+# axs[0].imshow(img)
+# axs[1].imshow(shear_img)
+# =============================================================================  
