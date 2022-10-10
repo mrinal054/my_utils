@@ -30,6 +30,6 @@ Currently has - <br>
     |-- mcd_gt_to_pred: Calculates mean curve distance from ground truth to prediction <br>
     |-- mcd_pred_to_gt: Calculates mean curve distance from prediction to ground truth <br>
   * aug2d.py <br>
-    |-- Augmentor2d: It performs augmentation on 2D images.
+    |-- Augmentor2d: It performs augmentation on 2D images. [demo](https://github.com/mrinal054/my_utils/blob/main/demo/aug2d/aug2d_demo.ipynb)
     
    
