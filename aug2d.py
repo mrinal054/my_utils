@@ -31,9 +31,7 @@ class Augmentor2d():
         '''
         flip_axis = 0 means horizontal flip
         flip_axis = 1 means vertical flip
-
         '''
-        
         if flip_axis == 0: return np.fliplr(self.data)
         elif flip_axis == 1: return np.flipud(self.data)
         else: raise ValueError('Wrong keyword for flip_axis')
