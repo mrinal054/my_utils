@@ -32,4 +32,4 @@ Currently has - <br>
   * aug2d.py <br>
     |-- Augmentor2d: It performs augmentation on 2D images. [demo](https://github.com/mrinal054/my_utils/blob/main/demo/aug2d/aug2d_demo.ipynb)
     
-   [here](https://github.com/mou58/deep_learning/tree/main/tensorflow/unet2d)
+  
