@@ -118,3 +118,8 @@ def runtime_patch(
 # img_dir = r'.\dataset\test\images'
 # mask_dir = r'.\dataset\test\labels'
 # 
+# # List of images
+# names = os.listdir(img_dir)
+# 
+# name = random.choice(names)
+# 
