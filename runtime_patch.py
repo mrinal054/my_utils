@@ -69,3 +69,6 @@ def runtime_patch(
     for i,x in enumerate(patch_mask):
         if np.sum(x) > 0: fg_idx.append(i) # fg
         else: bg_idx.append(i)  # background
+
+                    # If no foreground, then randomly return a background patch
+    if len(fg_idx) == 0: 
