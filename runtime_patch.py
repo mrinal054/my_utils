@@ -100,4 +100,16 @@ def runtime_patch(
 
         final_bg_idx = random.choice(bg_idx)
         
-        return patch_img[final_bg_idx], patch_mask[final_bg_idx]   
+        return patch_img[final_bg_idx], patch_mask[final_bg_idx] 
+
+# =============================================================================
+# # Example 
+#         
+# import cv2
+# import matplotlib.pyplot as plt
+# import os
+# import random
+# 
+# # Parameters
+# FG_PROB = 0.9 # probability of selecting a foreground image
+# MAX_ROI = True # select the patch that has maximum roi 
