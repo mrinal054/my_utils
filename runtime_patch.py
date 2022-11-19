@@ -64,3 +64,5 @@ def runtime_patch(
     patch_img, _, _ = patch.patch2d(image)
     patch_mask, _, _ = patch.patch2d(mask)
         
+    # Separate foreground (fg) and background
+    fg_idx, bg_idx = [], []
