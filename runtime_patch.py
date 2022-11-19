@@ -86,3 +86,18 @@ def runtime_patch(
         return patch_img[final_fg_idx], patch_mask[final_fg_idx]
        
         
+    # Choose foreground or background based on a probability distribution
+    fg_flag: bool
+    fg_flag = True if np.random.uniform(low=0, high=1, size=1) <= FG_PROB else False
+        
+    if fg_flag: # pick a foreground patch
+    
+        final_fg_idx = choose_fg_idx(patch_mask, fg_idx, MAX_ROI)
+            
+        return patch_img[final_fg_idx], patch_mask[final_fg_idx]
+        
+    else: # pick a background
+
+        final_bg_idx = random.choice(bg_idx)
+        
+        return patch_img[final_bg_idx], patch_mask[final_bg_idx]   
