@@ -60,3 +60,7 @@ def runtime_patch(
     It returns an image patch and the corresponding mask patch. 
     Size of image/mask patch: (patch_H, patch_W, ch) or (patch_H, patch_W)
     """
+    patch = Patch(patch_shape, overlap, patch_name='patch2d', csv_output=False)
+    patch_img, _, _ = patch.patch2d(image)
+    patch_mask, _, _ = patch.patch2d(mask)
+        
