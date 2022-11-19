@@ -113,3 +113,8 @@ def runtime_patch(
 # # Parameters
 # FG_PROB = 0.9 # probability of selecting a foreground image
 # MAX_ROI = True # select the patch that has maximum roi 
+# 
+# # Directory
+# img_dir = r'.\dataset\test\images'
+# mask_dir = r'.\dataset\test\labels'
+# 
