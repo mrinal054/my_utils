@@ -1,3 +1,14 @@
+"""
+This code is to generate on-the-fly patches for PyTorch or TensorFlow DataLoaders.
+
+Author: Mrinal Kanti Dhar
+
+Date: 12 November, 2022 
+
+Requirements:
+pip install jenti
+"""
+
 from jenti.patch import Patch
 import numpy as np
 import random
@@ -8,7 +19,6 @@ def choose_fg_idx(
         MAX_ROI:bool=True, # if true and the returned patch is a foreground patch, then it
                            # returns the patch that has maximum info or region of interest (roi) 
         ):
-  
     """ 
     It is a helper function that picks a foreground index. If MAX_ROI is True,
     then it returns the index of that patch that has max info or roi in it. Otherwise,
@@ -39,6 +49,7 @@ def choose_fg_idx(
     else: # randomly pick a foreground index
         return random.choice(fg_idx)
         
+
 def runtime_patch(
         image, # an nd-array with size H x W or H x W x Ch
         mask, # an nd-array with size H x W or H x W x Ch
@@ -48,6 +59,7 @@ def runtime_patch(
         MAX_ROI:bool=True, # if true and the returned patch is a foreground patch, then it
                            # returns the patch that has maximum info or region of interest (roi) 
         ):
+    
     """
     This function returns an image patch and the corresponding mask patch. The patch
     can be a background patch or a foreground patch.
@@ -60,19 +72,21 @@ def runtime_patch(
     It returns an image patch and the corresponding mask patch. 
     Size of image/mask patch: (patch_H, patch_W, ch) or (patch_H, patch_W)
     """
+    
     patch = Patch(patch_shape, overlap, patch_name='patch2d', csv_output=False)
     patch_img, _, _ = patch.patch2d(image)
     patch_mask, _, _ = patch.patch2d(mask)
-        
+    
     # Separate foreground (fg) and background
     fg_idx, bg_idx = [], []
+    
     for i,x in enumerate(patch_mask):
         if np.sum(x) > 0: fg_idx.append(i) # fg
         else: bg_idx.append(i)  # background
-
-                    # If no foreground, then randomly return a background patch
+    
+    # If no foreground, then randomly return a background patch
     if len(fg_idx) == 0: 
-
+        
         # Randomly choose a bg index
         final_bg_idx = random.choice(bg_idx)
         
@@ -85,7 +99,6 @@ def runtime_patch(
         
         return patch_img[final_fg_idx], patch_mask[final_fg_idx]
        
-        
     # Choose foreground or background based on a probability distribution
     fg_flag: bool
     fg_flag = True if np.random.uniform(low=0, high=1, size=1) <= FG_PROB else False
@@ -100,7 +113,7 @@ def runtime_patch(
 
         final_bg_idx = random.choice(bg_idx)
         
-        return patch_img[final_bg_idx], patch_mask[final_bg_idx] 
+        return patch_img[final_bg_idx], patch_mask[final_bg_idx]        
 
 # =============================================================================
 # # Example 
@@ -123,3 +136,27 @@ def runtime_patch(
 # 
 # name = random.choice(names)
 # 
+# # Read image
+# image = cv2.imread(os.path.join(img_dir, name))[:,:,::-1]
+# mask = cv2.imread(os.path.join(mask_dir, name), 0)
+# 
+# mask = np.expand_dims(mask, axis=-1)
+# 
+# # Create patches
+# patch_shape = [256, 256]
+# overlap = [10,10] # overlap between two adjacent patches along both axes
+#         
+# ip, mp = runtime_patch(
+#         image, 
+#         mask, 
+#         patch_shape=(256,256), 
+#         overlap=(0,0), 
+#         FG_PROB=0.9, 
+#         MAX_ROI=True)  
+# 
+# 
+# 
+# fig, ax = plt.subplots(2,1, figsize=(15,7))
+# ax[0].imshow(ip)
+# ax[1].imshow(mp, cmap='gray')
+# =============================================================================
