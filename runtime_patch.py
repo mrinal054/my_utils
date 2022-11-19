@@ -66,3 +66,6 @@ def runtime_patch(
         
     # Separate foreground (fg) and background
     fg_idx, bg_idx = [], []
+    for i,x in enumerate(patch_mask):
+        if np.sum(x) > 0: fg_idx.append(i) # fg
+        else: bg_idx.append(i)  # background
