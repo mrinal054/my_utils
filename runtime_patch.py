@@ -39,3 +39,12 @@ def choose_fg_idx(
     else: # randomly pick a foreground index
         return random.choice(fg_idx)
         
+def runtime_patch(
+        image, # an nd-array with size H x W or H x W x Ch
+        mask, # an nd-array with size H x W or H x W x Ch
+        patch_shape:tuple=(256,256), # patch size
+        overlap:tuple=(0,0), # overlap between adjacent patches
+        FG_PROB:float=0.9, # probability of choosing a foreground
+        MAX_ROI:bool=True, # if true and the returned patch is a foreground patch, then it
+                           # returns the patch that has maximum info or region of interest (roi) 
+        ):
