@@ -72,3 +72,17 @@ def runtime_patch(
 
                     # If no foreground, then randomly return a background patch
     if len(fg_idx) == 0: 
+
+        # Randomly choose a bg index
+        final_bg_idx = random.choice(bg_idx)
+        
+        return patch_img[final_bg_idx], patch_mask[final_bg_idx]
+    
+    # If no background, then randomly return a foreground patch
+    if len(bg_idx) == 0:
+        
+        final_fg_idx = choose_fg_idx(patch_mask, fg_idx, MAX_ROI)
+        
+        return patch_img[final_fg_idx], patch_mask[final_fg_idx]
+       
+        
