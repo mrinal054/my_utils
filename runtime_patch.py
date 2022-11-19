@@ -6,9 +6,7 @@ Author: Mrinal Kanti Dhar
 Date: 12 November, 2022 
 
 Requirements: 
-    
 pip install jenti
-
 """
 
 from jenti.patch import Patch
