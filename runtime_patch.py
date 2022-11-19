@@ -48,3 +48,15 @@ def runtime_patch(
         MAX_ROI:bool=True, # if true and the returned patch is a foreground patch, then it
                            # returns the patch that has maximum info or region of interest (roi) 
         ):
+    """
+    This function returns an image patch and the corresponding mask patch. The patch
+    can be a background patch or a foreground patch.
+    
+        foreground patch: It contains information or region of interest (roi)
+        background patch: It does not contain any info or roi
+        
+    Return
+    --------
+    It returns an image patch and the corresponding mask patch. 
+    Size of image/mask patch: (patch_H, patch_W, ch) or (patch_H, patch_W)
+    """
