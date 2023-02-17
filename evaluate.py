@@ -3,8 +3,8 @@ It calculates accuracy (acc), specificity (sp), precision (p), recall (r), dice 
 
 Inputs
 ------------
-    gt: (array: HxWX1 or HxW) Ground truth image which has two unique values only
-    pred: (array: HxWX1 or HxW) Predicted image which has two unique values only
+    gt: (array: HxWx1 or HxW) Ground truth image which has two unique values only
+    pred: (array: HxWx1 or HxW) Predicted image which has two unique values only
     HARD_LINE: (bool) If True, then all metrics are set to 0 when GT is a black image but prediction is not. 
 
 Outputs
