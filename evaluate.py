@@ -47,8 +47,7 @@ def evaluate_binary(gt_mask, pred, HARD_LINE:bool=True):
                 tn = len(flat_pred) - fp # no. of zero intensity pixels
                 
             else:
-                # If HARD_LINE is False, then metrics will be calculated considering
-                # background pixels as y_true. 
+                # If HARD_LINE is False, then metrics will be calculated considering background pixels as y_true.                 
                 
                 # Calculate metrics for image-based evaluation. 
                 # This time consider background as y_true. 
