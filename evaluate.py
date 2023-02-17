@@ -1,12 +1,9 @@
 """
 It calculates accuracy, specificity, dice score, and IoU.
 """
-
 import numpy as np
 import cv2
 from sklearn.metrics import confusion_matrix
-
-
 
 def evaluate_binary(gt_mask, pred, HARD_LINE:bool=True):
     
