@@ -95,9 +95,9 @@ if __name__ == "__main__":
 
     name = names[0] # get one image name
 
-    gt_mask = cv2.imread(os.path.join(dir_gt, name), 0)
+    gt_mask = cv2.imread(os.path.join(dir_gt, name), 0) # read ground truth image
 
-    pred = cv2.imread(os.path.join(dir_pred, name), 0)
+    pred = cv2.imread(os.path.join(dir_pred, name), 0) # read prediction
     
     tp, fp, tn, fn, acc, sp, p, r, dice, iou = evaluate_binary(gt_mask, pred, HARD_LINE=True)
 
