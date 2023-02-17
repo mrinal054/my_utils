@@ -1,5 +1,5 @@
 """
-It calculates accuracy, specificity, dice score, and IoU.
+It calculates accuracy, specificity, precision, recall, dice score, and IoU.
 """
 import numpy as np
 import cv2
