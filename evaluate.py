@@ -88,8 +88,8 @@ if __name__ == "__main__":
     import os
     
     # Dataset directory
-    dir_gt = r'E:\Dataset\wound-segmentation-master\azh_wound_care_center_dataset_patches\test\labels'
-    dir_pred = r'F:\Research\Foot_ulcer\predictions\OldDFU\Unet_scse_efficientnet-b7_2023-01-11_00-25-36'
+    dir_gt = r'.\labels'
+    dir_pred = r'.\predictions'
 
     names = os.listdir(dir_gt)
 
