@@ -1,5 +1,27 @@
 """
-It calculates accuracy, specificity, precision, recall, dice score, and IoU.
+It calculates accuracy (acc), specificity (sp), precision (p), recall (r), dice score (dice), and intersection-over-union (iou).
+
+Inputs
+------------
+    gt: (array: HxWX1 or HxW) Ground truth image which has two unique values only
+    pred: (array: HxWX1 or HxW) Predicted image which has two unique values only
+    HARD_LINE: (bool) If True, then all metrics are set to 0 when GT is a black image but prediction is not. 
+
+Outputs
+------------
+    tp, fp, tn, fn, acc, sp, p, r, dice, iou
+    
+Notes
+------------
+It considers the following cases - 
+
+    Case I: If there is no GT pixels in the image
+        Case I.a: If both GT and prediction are black, then all metrics are set to 100%
+        Case I.b: If GT is black, but prediction is not fully black
+            If HARD_LINE is True, then set all metrics to 0
+            If HARD_LINE is False, then background is considered as y_true, and then metrics are calculated
+    Case II: If there is some GT pixels in the image, then it will calculate in the normal way.
+             It will consider the foreground as the y_true.     
 """
 import numpy as np
 import cv2
