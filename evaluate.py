@@ -85,9 +85,6 @@ def evaluate_binary(gt_mask, pred, HARD_LINE:bool=True):
     return tp, fp, tn, fn, acc, sp, p, r, dice, iou
 
 
-
-
-
 if __name__ == "__main__":
     import os
     
