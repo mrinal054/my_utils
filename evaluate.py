@@ -1,6 +1,8 @@
 """
 It calculates accuracy (acc), specificity (sp), precision (p), recall (r), dice score (dice), and intersection-over-union (iou).
 
+Images should be binary or can have two unique values only.
+
 Inputs
 ------------
     gt: (array: HxWx1 or HxW) Ground truth image which has two unique values only
