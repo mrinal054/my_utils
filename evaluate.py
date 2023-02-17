@@ -5,14 +5,14 @@ import numpy as np
 import cv2
 from sklearn.metrics import confusion_matrix
 
-def evaluate_binary(gt_mask, pred, HARD_LINE:bool=True):
+def evaluate_binary(gt, pred, HARD_LINE:bool=True):
     
     # Remove single axis
-    gt_mask = np.squeeze(gt_mask)
+    gt = np.squeeze(gt)
     pred = np.squeeze(pred)
 
     # Calculate accuracy, specificity, iou, precision, recall, and dice
-    flat_mask = np.squeeze(gt_mask).flatten()
+    flat_mask = np.squeeze(gt).flatten()
     flat_pred = np.squeeze(pred).flatten()
 
     ep = 1e-6
