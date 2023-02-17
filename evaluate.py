@@ -1,5 +1,5 @@
 """
-It performs data-based evaluation
+It calculates accuracy, specificity, dice score, and IoU.
 """
 
 import numpy as np
