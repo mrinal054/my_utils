@@ -91,9 +91,9 @@ if __name__ == "__main__":
     dir_gt = r'.\labels'
     dir_pred = r'.\predictions'
 
-    names = os.listdir(dir_gt)
+    names = os.listdir(dir_gt) # list all image names
 
-    name = names[0]
+    name = names[0] # get one image name
 
     gt_mask = cv2.imread(os.path.join(dir_gt, name), 0)
 
