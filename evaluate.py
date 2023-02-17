@@ -24,7 +24,6 @@ It considers the following cases -
              It will consider the foreground as the y_true.     
 """
 import numpy as np
-import cv2
 from sklearn.metrics import confusion_matrix
 
 def evaluate_binary(gt, pred, HARD_LINE:bool=True):
@@ -108,6 +107,7 @@ def evaluate_binary(gt, pred, HARD_LINE:bool=True):
 
 if __name__ == "__main__":
     import os
+    import cv2
     
     # Dataset directory
     dir_gt = r'.\labels'
