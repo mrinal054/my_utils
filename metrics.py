@@ -110,5 +110,34 @@ def mcd_GP_cord_based(gt_cords, pred_cords, high_value=float):
         mcd = sum_d/(n_gt + EPSILON)
     return mcd
 
+#%%
+def mcd_PG_cord_based(gt_cords, pred_cords, high_value=float):
+    '''
+    This function calculates mean curve distance (MCD) from groundtruth to prediction.
+    Inputs:
+        - gt_cords: A list that contains coordinates of the GT contour
+        - pred_cords: A list that contains coordinates of the prediction contour
+        - high_value: set MCD to a high value if it fails constraints. If gt mask pixels 
+          exists but prediction mask not or vice versa, then set MCD score to the high_value. 
+    Output:
+        - out: returns mcd value  
+    '''    
+    EPSILON = 1e-6
+
+    n_gt = len(gt_cords)
+    
+    n_pred = len(pred_cords) # no. of ones in prediction
+    
+    # Set constraints
+    if (n_gt>0 and n_pred==0) or (n_gt==0 and n_pred>0): mcd = high_value # setting a relatively high mcd value
+        
+    elif n_gt==0 and n_pred == 0: mcd = 0.0
+    
+    else:            
+        d = distance.cdist(pred_cords, gt_cords, 'euclidean') 
+        min_d = np.min(d, axis=1) # find min row-wise
+        sum_d = math.fsum(min_d) 
+        mcd = sum_d/(n_pred + EPSILON)
+    return mcd
 
 
