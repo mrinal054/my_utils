@@ -113,7 +113,7 @@ def mcd_GP_cord_based(gt_cords, pred_cords, high_value=float):
 #%%
 def mcd_PG_cord_based(gt_cords, pred_cords, high_value=float):
     '''
-    This function calculates mean curve distance (MCD) from groundtruth to prediction.
+    This function calculates mean curve distance (MCD) from prediction to groundtruth.
     Inputs:
         - gt_cords: A list that contains coordinates of the GT contour
         - pred_cords: A list that contains coordinates of the prediction contour
