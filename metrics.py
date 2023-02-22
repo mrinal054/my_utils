@@ -80,7 +80,7 @@ def mcd_pred_to_gt(gt_skl, pred_skl, iso_spacing, high_value=float):
     return mcd
 
 #%%
-def mcd_GP_cord_based(gtCords, predCords, high_value=float):
+def mcd_GP_cord_based(gt_cords, pred_cords, high_value=float):
     '''
     This function calculates mean curve distance (MCD) from groundtruth to prediction.
     Inputs:
