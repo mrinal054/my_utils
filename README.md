@@ -38,7 +38,7 @@ Currently has - <br>
     
     <br>
     
-   * Examples: <br>
+   * **Examples** <br>
      |-- image_paddding: Padding around an image.
     
   
