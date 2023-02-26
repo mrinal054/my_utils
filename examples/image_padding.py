@@ -32,7 +32,8 @@ for name in names:
     
     (0, 0) means no padding across the channel axis. 
     """
-        
+    
+    # Save image
     cv2.imwrite(os.path.join(dir_dst, name), im_pad[:,:,::-1])
 
     # # Uncomment to visualize
