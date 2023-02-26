@@ -36,4 +36,9 @@ Currently has - <br>
   * evaluate.py <br>
     |-- evaluate_binary: It calculates accuracy, specificity, precision, recall, dice score, and iou for binary segmentation <br>
     
+    <br>
+    
+   * Examples: <br>
+     |-- image_paddding: Padding around an image.
+    
   
