@@ -3,6 +3,7 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 
+# Set directory
 dir_src = r'.\test_images'
 dir_dst = r'.\test_images_padded'
 
