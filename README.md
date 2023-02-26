@@ -39,6 +39,6 @@ Currently has - <br>
     <br>
     
    * **Examples** <br>
-     |-- image_paddding: Padding around an image.
+     |-- image_paddding.py: Padding around an image.
     
   
