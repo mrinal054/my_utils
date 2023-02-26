@@ -6,9 +6,10 @@ import numpy as np
 dir_src = r'.\test_images'
 dir_dst = r'.\test_images_padded'
 
+# Create destination directory if not exists
 if not os.path.exists(dir_dst): os.makedirs(dir_dst)
 
-names = os.listdir(dir_src)
+names = os.listdir(dir_src) # read names in the source directory
 
 # Padded image size
 frame_size = (512, 512, 3)
