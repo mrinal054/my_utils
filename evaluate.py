@@ -125,3 +125,88 @@ if __name__ == "__main__":
     
     tp, fp, tn, fn, acc, sp, p, r, dice, iou = evaluate_binary(gt_mask, pred, HARD_LINE=True)
 
+
+# =============================== End of evaluate_binary =============================== #
+
+# ================================== Start of iouOBB =================================== #
+"""
+This code calculates IoU between two oriented rectangular bounding boxes.
+
+Author: Mrinal 
+"""
+
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+from shapely.geometry import Polygon
+
+def intersection_area(rect1, rect2):
+    """Calculate the intersection area between two oriented rectangles."""
+    poly1 = Polygon(rect1)
+    poly2 = Polygon(rect2)
+    if not poly1.intersects(poly2):
+        return 0.0
+
+    poly_intersection = poly1.intersection(poly2)
+    return poly_intersection.area
+
+def union_area(rect1, rect2):
+    """Calculate the union area of two oriented rectangles."""
+    poly1 = Polygon(rect1)
+    poly2 = Polygon(rect2)
+    poly_union = poly1.union(poly2)
+    return poly_union.area
+
+def iouOBB(rect1, rect12):
+    intersection = intersection_area(rect1, rect2)
+    union = union_area(rect1, rect2)
+    
+    return intersection / union
+
+def plot_oriented_rectangles(rect1, rect2):
+    """Plot the two oriented rectangles and their overlapping area."""
+    fig, ax = plt.subplots()
+
+    # Plot the first rectangle
+    rect1_patch = patches.Polygon(rect1, closed=True, linewidth=1, edgecolor='blue', facecolor='none')
+    ax.add_patch(rect1_patch)
+
+    # Plot the second rectangle
+    rect2_patch = patches.Polygon(rect2, closed=True, linewidth=1, edgecolor='red', facecolor='none')
+    ax.add_patch(rect2_patch)
+
+    # Calculate the overlapping area and plot the overlapping rectangle if it exists
+    overlap_area = intersection_area(rect1, rect2)
+    if overlap_area > 0:
+        intersection_points = np.array(list(Polygon(rect1).intersection(Polygon(rect2)).exterior.coords))
+        overlap_patch = patches.Polygon(intersection_points, closed=True, linewidth=1, edgecolor='green', facecolor='none')
+        ax.add_patch(overlap_patch)
+
+    ax.set_aspect('equal', 'box')
+    ax.autoscale()
+    plt.xlabel('X-axis')
+    plt.ylabel('Y-axis')
+    plt.title('Overlapping Oriented Rectangles')
+    plt.grid(True)
+
+    # Create the legend only if there is an overlapping area
+    if overlap_area > 0:
+        plt.legend([rect1_patch, rect2_patch, overlap_patch], ['Rectangle 1', 'Rectangle 2', 'Overlapping Area'])
+    else:
+        plt.legend([rect1_patch, rect2_patch], ['Rectangle 1', 'Rectangle 2'])
+
+    plt.show()
+
+
+
+if __name__ == "__main__":
+    rect1 = [(3, 2), (1, 5), (7, 14), (10, 5)]  # Oriented rectangle 1
+    rect2 = [(2, 2), (5, 2), (5, 5), (3, 5)]  # Oriented rectangle 2
+    
+    print('Intersection: ', intersection_area(rect1, rect2))
+    print('Union: ', union_area(rect1, rect2))
+    print('IoU: ', iouOBB(rect1, rect2))
+    
+    plot_oriented_rectangles(rect1, rect2)
+
+# =================================== End of iouOBB =================================== #
