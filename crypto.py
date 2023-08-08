@@ -57,3 +57,51 @@ def encryt(im_loc, encrypted_im_name:str='encrypted_image.bin', key_name:str='ke
     with open(key_name, "wb") as k:
         k.write(key)
 
+#%% Decrypt
+def decrypt(encrypted_im_loc, key_loc, decrypted_im_name:str='decrypted_image.jpg',
+            salt_byte:int=16, key_byte:int=32, iv_byte:int=16):
+    """ This function decrypt an encrypted image
+    Inputs
+    =========
+    encrypted_im_loc (str): Entire encrypted image location including the image name with extension.
+    key_loc (str): Entire key location including the image name with extension.
+    decrypted_im_name (str): Name that will be used to store the decrypted image.
+    salt_byte (int): Byte value for salt.
+    key_byte (int): Byte value for key.
+    iv_byte (int): Byte value for Initialization Vector.
+    """
+    # Read the encrypted data from the file
+    with open(encrypted_im_loc, 'rb') as encrypted_file:
+        encrypted_data = encrypted_file.read()
+    
+    # Extract the salt, IV, and ciphertext from the encrypted data
+    salt = encrypted_data[:salt_byte]
+    iv = encrypted_data[salt_byte:salt_byte+iv_byte]
+    ct = encrypted_data[salt_byte+iv_byte:]
+    
+    # Read key
+    with open(key_loc, 'rb') as k:
+        key = k.read()
+    
+    # Create a Cipher object for decryption
+    cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
+    
+    # Create a decryptor
+    decryptor = cipher.decryptor()
+    
+    # Decrypt the ciphertext
+    padded_image_data = decryptor.update(ct) + decryptor.finalize()
+    
+    # Remove PKCS7 padding
+    unpadder = padding.PKCS7(128).unpadder()
+    image_data = unpadder.update(padded_image_data)
+    try:
+        image_data += unpadder.finalize()
+    except ValueError:
+        # Padding is not valid, so just use the unpadded data
+        pass
+    
+    # Write the decrypted image data to a file
+    with open(decrypted_im_name, 'wb') as decrypted_file:
+        decrypted_file.write(image_data)
+
