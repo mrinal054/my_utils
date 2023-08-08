@@ -35,6 +35,7 @@ Currently has - <br>
     |-- It generates on-the-fly patches for PyTorch or TensorFlow DataLoaders. [demo](https://github.com/mrinal054/my_utils/blob/main/demo/runtime_patch/runtime_patch_demo.ipynb) <br>
   * evaluate.py <br>
     |-- evaluate_binary: It calculates accuracy, specificity, precision, recall, dice score, and iou for binary segmentation <br>
+    |-- iouOBB: It calculates IoU between two oriented bounding boxes (OBB) <br>
     
     <br>
     
