@@ -105,3 +105,53 @@ def decrypt(encrypted_im_loc, key_loc, decrypted_im_name:str='decrypted_image.jp
     with open(decrypted_im_name, 'wb') as decrypted_file:
         decrypted_file.write(image_data)
 
+#%%
+if __name__ == "__main__":
+    import time
+    
+    root = r'D:\Mou\kvasir-dataset-v2\dyed-lifted-polyps' # this dir contains all images
+    
+    encrypt_dir = r'D:\Mou\encrypted' # where the encrypted images will stored
+    decrypt_dir = r'D:\Mou\decrypted' # where the decrypted images will stored    
+    key_dir = r'D:\Mou\keys' # where the keys will be stored
+    
+    os.makedirs(encrypt_dir, exist_ok=True)
+    os.makedirs(decrypt_dir, exist_ok=True)
+    os.makedirs(key_dir, exist_ok=True)
+    
+    names = os.listdir(root)
+    
+    start = time.time()
+    
+    #%% Encryption
+    for name in names:
+        name_only = os.path.splitext(name)[0]
+        im_loc = os.path.join(root, name)
+        
+        encryt(im_loc, 
+               encrypted_im_name=os.path.join(encrypt_dir, name_only+'.bin'), 
+               key_name=os.path.join(key_dir, name_only+'.bin'),            
+               salt_byte=16, key_byte=32, iv_byte=16)
+        
+    end = time.time()
+    encrypt_time = end - start
+    
+    #%% Decryption
+    start = time.time()
+    for name in names:
+        name_only = os.path.splitext(name)[0]
+        encrypted_im_loc = os.path.join(encrypt_dir, name_only + '.bin')
+        key_loc = os.path.join(key_dir, name_only+'.bin')
+        
+        decrypt(encrypted_im_loc, key_loc, 
+                decrypted_im_name=os.path.join(decrypt_dir, name),
+                    salt_byte=16, key_byte=32, iv_byte=16)
+
+    end = time.time()
+    decrypt_time = end - start
+    
+    with open('crypto_time.txt', "w") as f:
+        print("Encryption time:", encrypt_time, file=f)
+        print("Decryption time:", decrypt_time, file=f)
+        
+    
