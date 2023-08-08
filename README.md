@@ -38,6 +38,7 @@ Currently has - <br>
     |-- iouOBB: It calculates IoU between two oriented bounding boxes (OBB) <br>
   * crypto.py <br>
     |-- encrypt: It encrypts an image <br>
+    |-- decrypt: It decrypts an image <br>
     <br>
     
    * **Examples** <br>
