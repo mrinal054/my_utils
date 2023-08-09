@@ -157,7 +157,7 @@ def union_area(rect1, rect2):
     poly_union = poly1.union(poly2)
     return poly_union.area
 
-def iouOBB(rect1, rect12):
+def iouOBB(rect1, rect2):
     intersection = intersection_area(rect1, rect2)
     union = union_area(rect1, rect2)
     
